@@ -1,0 +1,115 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Expanding popup menus in pure CSS</title>
+    <meta name="author" content="Inigo Surguy - inigosurguy@hotmail.com"/>
+    <meta name="description" content="Demonstrates a expanding menu using pure CSS and no JavaScript"/>
+    <style type="text/css">
+	body { font-family: Verdana; }
+
+	div.mainmenu {
+	    margin-top: 20px;
+	    font-weight: bold;
+	    z-index: 1;
+	}
+
+	div.menu {
+	    float: left;
+	    margin-left: 20px;
+	}
+
+	div.topmenuitem + div.popup { visibility: hidden; }
+	div.topmenuitem:hover + div.popup { visibility: visible; }
+
+	div.popup { background-color: #99f; }
+
+	div.topmenuitem:hover, div.popup div:hover { color: #ccc; }
+
+	div.topmenuitem {
+	    background-color: #66f;
+	    padding: 5px;
+	    border: solid 2px blue;
+	}
+
+	div.popup div { margin-bottom: 2px; margin-left: 5px; margin-right: 2px; margin-top: 2px; }
+	div.popup div + div { margin-top: 10px; } 
+
+	div.content {
+	    position: absolute;
+	    margin-top: 140px;
+	    left: 20px;
+	    top: 45px;
+	    border: 1px dashed gray;
+	}
+    </style>
+</head>
+<body>
+<div class="mainmenu">
+    <div class="menu">
+        <div class="topmenuitem">Python</div>
+        <div class="popup">
+	    <div>One</div>
+	    <div>Fish</div>
+	    <div>Two</div>
+	    <div>Fish</div>
+	</div>
+    </div>
+
+    <div class="menu">
+        <div class="topmenuitem">Java and Halibut</div>
+        <div class="popup">
+	    <div>One</div>
+	    <div>Fish</div>
+	    <div>Two</div>
+	    <div>Fish</div>
+	</div>
+    </div>
+
+    <div class="menu">
+        <div class="topmenuitem">Oxo</div>
+        <div class="popup">
+	    <div>One</div>
+	    <div>Fish and more fish</div>
+	    <div>Two</div>
+	    <div>Fish</div>
+	</div>
+    </div>
+
+</div>
+
+<div class="content">
+<h1>About this page</h1>
+<p>This is a pure CSS pop-up menu; there is no JavaScript being used.</p>
+
+<p><b>It doesn't work in any existing browsers</b>. There is a
+<a href="index.html">working version</a>, but I think this one 
+should cope better when the browser text size is increased.</p>
+
+<p><b>Update:</b> Several people have now told me that this page works
+in Safari on Mac OS X. I don't have a Mac myself, but this is very
+good news - and hopefully Mozilla will soon catch up.</p>
+
+<p>That it doesn't work may be because I've made a mistake with the 
+CSS, but I believe it is because of browser deficiencies. Certainly,
+no other browser apart from Gecko-derivatives (such as Mozilla and 
+Netscape 6+) even try to make CSS 2 work, and I think there is 
+a problem with Mozilla's support for:
+<pre>
+	div.topmenuitem + div.popup { visibility: hidden; }
+	div.topmenuitem:hover + div.popup { visibility: visible; }
+</pre>
+ie - the <em>sibling combinator</em> used in conjunction with the 
+<em>hover pseudo-class</em>. This may be related to 
+<a href="http://bugzilla.mozilla.org/show_bug.cgi?id=5693">
+Mozilla bug 5693</a>, but there seems to be some controversy about
+exactly how <em>hover</em> is specified to work.
+</p>
+
+<h2>Return to index</h2>
+<p><a href="../index.html">Return to index</a></p>
+</div>
+
+</div>
+</body>
+</html>

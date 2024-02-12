@@ -1,0 +1,17 @@
+@import "menus.css";
+
+div.mainmenu {
+    position: relative;
+    margin-top: 150px;
+}
+
+div.menu { clear: left; }
+
+div.content {
+    float: left;
+    position: relative;
+    margin-left: 20px;
+    /* Without a smaller width, the content doesn't break - so it jumps beneath the left hand nav */
+    width: 75%;
+}
+

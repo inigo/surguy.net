@@ -1,0 +1,239 @@
+baseURL: https://surguy.net/
+languageCode: en-gb
+title: Inigo Surguy
+theme: hugo-profile
+uglyURLs: true
+
+outputs:
+  home:
+    - "HTML"
+    - "RSS"
+    - "JSON"
+  page:
+    - "HTML"
+    - "RSS"
+
+disableKinds:
+  - taxonomy
+
+Paginate: 3
+enableRobotsTXT: true
+# googleAnalytics: G-MEASUREMENT_ID
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+smartypants: false
+
+params:
+  title: "Inigo Surguy"
+  # staticPath: ""  # The path to serve the static files from
+  favicon: "/images/favicon/favicon-32x32.png"
+  socialShare: false
+  description: Inigo Surguy, interested in climate change, AI, and software development
+
+  # Whether to serve bootstrap css and js files from CDN or not. Can be set to true, "css" or "js" to choose between
+  # serving both, only the css, or only the js files through the CDN. Any other value will make so that CDN is not used.
+  # Note the lack of "" in true, it should be of boolean type.
+  useBootstrapCDN: true
+
+  # Whether to add mathjax support on all pages. Alternatively, you can opt-in per page by adding `mathjax: true` in the frontmatter.
+  mathjax: false
+
+  # Whether the fade animations on the home page will be enabled
+  animate: true
+
+  theme:
+     disableThemeToggle: true
+     defaultTheme: "light" # dark
+
+  font:
+    fontSize: 1.2rem # default: 1rem
+    fontWeight: 400 # default: 400
+    lineHeight: 1.5 # default: 1.5
+    textAlign: left # default: left
+
+  # If you want to customize the menu, you can change it here
+  navbar:
+    align: ms-auto # Left: ms-auto | center: mx-auto | right: me-auto | Default: ms-auto
+    # brandLogo: "/logo.png" # Logo for the brand | default is the favicon variable
+    showBrandLogo: false # Show brand logo in nav bar | default is true
+    brandName: "" # Brand name for the brand | default is the title variable
+    disableSearch: true
+    stickyNavBar:
+      enable : true
+      showOnScrollUp : true
+    menus:
+      disableAbout: false
+      disableExperience: false
+      disableEducation: false
+      disableProjects: false
+      disableAchievements: false
+      disableContact: false
+
+  # Hero
+  hero:
+    enable: true
+    intro: ""
+    title: "Inigo Surguy"
+    subtitle: "I'm interested in climate change, AI, and software development"
+    content: ""
+    image: /images/inigo-bw.jpg
+    bottomImage:
+      enable: false
+    button:
+      enable: false
+      name: "Resume"
+      url: "#"
+      download: true
+      newPage: false
+    socialLinks:
+      fontAwesomeIcons:
+        - icon: /images/icons/github.svg
+          url: https://github.com/inigo/
+        - icon: /images/icons/mastodon.svg
+          url: https://mastodon.org.uk/@inigo
+        - icon: /images/icons/linkedin.svg
+          url: https://www.linkedin.com/in/inigosurguy/ 
+
+  # About
+  about:
+    enable: true
+    title: "About Me"
+    image: ""
+    content: |-
+      I co-founded [67 Bricks Ltd.](https://67bricks.com/) with Sam Herbert, and grew it to be a respected and
+      award-winning company with over 40 employees. We work with major information providers such as the __Economist Intelligence Unit__, 
+      __Taylor and Francis__, __Springer Nature__, and the __British Medical Journal__. 
+      
+      I enjoyed every aspect of building the company,
+      including talking to our customers and understanding their problems; strategic technical decision making as CTO; 
+      hiring and managing a talented team; and hands-on software development. We've always been innovative and have been working with AI 
+      for the last decade, and I'm very excited about the new possibilities that generative AI provides. 
+      I'm also proud to have founded a company that has always cared about its impact on society and on the environment. 
+      
+      With 67 Bricks now independently thriving, I'm looking at new areas where I can apply my expertise. 
+      In particular, I believe that climate change is the most important problem that we face today,
+      and software solutions can help address this critical global challenge.
+
+  skills:
+      enable: false
+
+  # Experience
+  experience:
+    enable: true
+    title: "Writing"
+    items:
+      - company: "Code"
+        content: |
+          Most of my public code is on my [Github account](https://github.com/inigo/). Some specific projects are:
+          
+          - [Fossil Registry Extractor](https://github.com/inigo/fossilregistry_extractor) - extracts fossil fuel extraction data from PDF documents relevant to the [Global Registry of Fossil Fuels](https://fossilfuelregistry.org/), using Python
+          - [(human) language detection code](https://github.com/inigo/language-detection) that uses an approach based on n-grams to recognize whether a given piece of text is in English, French or German
+          - [Scala JS implementation of Minesweeper](https://github.com/inigo/scalajs-minesweeper) with a [hosted version](https://s3.eu-west-2.amazonaws.com/scalajs-minesweeper/resources/index-opt.html)
+          - [bitburner-scripts](https://github.com/inigo/bitburner-scripts) - automation scripts in TypeScript for playing the cyberpunk hacking game [Bitburner](https://bitburner-official.github.io/)
+          - [scala-xom](https://github.com/inigo/scala-xom) - a library to make using the XOM XML library and Saxon XPath 2 easier from within Scala
+          - [Under Hollow Hills Foundry module](https://github.com/inigo/under-hollow-hills-foundryvtt) - a FoundryVTT module to help play Meguey and Vincent Baker's game [Under Hollow Hills](https://lumpley.games/under-hollow-hills-about-the-game/)
+          - [Nanoleaf MacOS widget](https://github.com/inigo/nanoleaf-widget-swift) - a MacOS widget to change scenes on a Nanoleaf Shapes instance, written in Swift
+          - [Automated accessibility testing](https://github.com/inigo/automated-accessibility-testing) using XProc and Schematron.
+      - company: "Articles"
+        content: |
+          These are older articles I've written:
+          
+          - [Rediscovering JavaScript](/articles/rediscovering-javascript.html) (2006)
+          - [Client-side image generation with XSLT and SVG](/articles/client-side-svg.html) (2003)
+          - [Applying the Visitor pattern to a hierarchy where the member classes are not fixed, by using reflection](/articles/visitor-with-reflection.html) (as seen in [Heinz Kabutz's Java Specialists Newsletter](https://www.javaspecialists.eu/archive/)) (2003)
+          - [Communicating between two classes with identical names loaded in different classloaders](/articles/communication-across-classloaders.html) (2002)
+          - [Speeding up Log4J in JDK 1.5 by removing unused log methods from the bytecode](/articles/removing-log-messages.html) (2002)
+          - [Speech recognition in Windows using the MS Speech API](/articles/speechrecognition.html) (2002)
+          - [Generating webpage images dynamically from XML using XSLT, BSF and Jython](/articles/generating-graphics-with-xslt.html) (2002)
+          - [Producing pop-up menus with CSS only](/menu/index.html) (referenced by [Eric Meyer's css/edge](http://www.meyerweb.com/eric/css/edge/menus/demo.html)) (2002)
+      - company: "Standards"
+        content: |
+          For a number of years, I was a member of the British Standards Institute's IST/41 committee, representing the UK on the ISO/IEC SC34 committee
+          responsible for international standardization of document description and processing languages (such as OOXML, ODF, and Schematron). I was
+          involved in the contentious discussions around whether OOXML should be standardized, and wrote several articles relating to it at the time:
+          
+          - [Technical review of OOXML](/articles/ooxml-validation-and-technical-review.html)
+          - [OOXML standardization by ISO - what you can do](/articles/ooxml-brm.html)
+
+  # Education
+  education:
+    enable: false
+
+  # Achievements
+  achievements:
+    enable: true
+    title: "My Companies"
+    items:
+      - title: Founder and former CTO of 67 Bricks Ltd.
+        content: |
+          We partner with information companies to give them the control, flexibility and agility they need to thrive in the evolving digital landscape.
+        url: https://67bricks.com
+        image: /images/brickslogo.gif
+#      - title: Founder of Gorgonops Ltd.
+#        content: Using AI to fight climate change.
+#        url: https://gorgonops.com
+#        image: /images/gorgonops.png
+
+
+  books:
+    enable: true
+    title: "My Books"
+    items:
+      - title: Practical XML for the Web
+        content: “Love this book - as a seasoned web developer with heaps of experience I find this book a great reference tool, fantastic prompter when I'm struggling with XML technologies, all round very well written” - Hamish Fraser, Amazon review. 
+        url: https://www.amazon.co.uk/exec/obidos/ASIN/1904151086/qid%3D/026-0933418-3778811
+        image: /images/book-xml.jpg
+      - title: Content Management Systems
+        content: “...tackles crucial technical issues that anyone involved in a CMS must face, but the pitch is accessible to most readers interested in the highly complex, and highly fascinating world of CMS” - Paola DI MAIO - Content Wire (2002).
+        url: http://www.amazon.co.uk/exec/obidos/ASIN/190415106X/qid=1029944584/sr=1-5/ref=sr_1_3_5/202-4143590-4899065
+        image: /images/book-cms.jpg
+      - title: Practical Intranet Development
+        content: How to design and implement an effective intranet, including identifying user needs, justifying it to your organization, and solving the technical and social problems that may arise.
+        url: http://www.amazon.com/exec/obidos/tg/detail/-/1590591690/103-1861561-4174226
+        image: /images/book-intranet.jpg
+
+  # projects
+  projects:
+    enable: false
+
+  #Contact
+  contact:
+    enable: true
+    title: "Contact Me"
+    content: You can email me at website@surguy.net
+
+  footer:
+    recentPosts:
+      enable: false
+
+  # List pages like blogs and posts
+  listPages:
+    disableFeaturedImage: false
+
+  # Single pages like blog and post
+  singlePages:
+    readTime:
+      enable: false
+      content: "min read"
+    scrollprogress:
+      enable: false
+
+  # For translations
+  terms:
+    read: "Read"
+    toc: "Table of Contents"
+    copyright: "Inigo Surguy"
+    pageNotFound: "Page not found"
+    emailText: "Check out this site"
+
+  datesFormat:
+    article: "Jan 2, 2006"
+    articleList: "Jan 2, 2006"
+    articleRecent: "Jan 2, 2006"
+
+  #customScripts: -| # You can add custom scripts which will be added before </body> tag
+  #  <script type="text/javascript"><!-- any script here --></script>

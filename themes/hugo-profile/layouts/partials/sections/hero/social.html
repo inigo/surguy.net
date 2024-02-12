@@ -1,0 +1,17 @@
+<span>
+    {{ range .Site.Params.hero.socialLinks.fontAwesomeIcons }}
+    <span class="px-1">
+        <a href="{{ .url }}" target="_blank" class="btn social-icon text-primary">
+            <img src="{{ .icon}}">
+        </a>
+    </span>
+    {{ end }}
+
+    {{ range .Site.Params.hero.socialLinks.customIcons }}
+    <span class="px-1">
+        <a href="{{ .url }}" target="_blank" class="btn social-icon">
+            <img src="{{ .icon }}">
+        </a>
+    </span>
+    {{ end }}
+</span>

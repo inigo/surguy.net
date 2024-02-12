@@ -1,0 +1,46 @@
+body { font-family: Verdana; }
+
+div.mainmenu {
+    position: absolute;
+    left: 10px;
+    top: 150px;
+    font-weight: bold;
+    z-index: 1;
+}
+
+div.menu {
+    float: left;
+    margin-left: 10px; 
+}
+
+div.popup a:hover { background-color: #faa; }
+div.menu:hover div:first-child { border-bottom: none; }
+div.menu div.popup { display: none; }
+div.menu:hover div.popup { 
+    display: block; 
+    background-color: #99f; 
+}
+
+
+div.menu div {
+    width: 175px;
+    background-color: #66f;
+    padding: 5px;
+    border: solid 2px blue;
+}
+
+
+div.popup div, div.popup a { display:block; text-decoration: none; margin: 2px 2px 2px 5px; }
+div.popup div + div, div.popup a + a { margin-top: 10px; } 
+
+div.content {
+    position: absolute;
+    left: 20px;
+    top: 195px;
+    border: 1px dashed gray;
+}
+
+.current:after { content: "<"; color: white; }
+.current:before { content: ">"; color: white; }
+.current { color: white; }
+

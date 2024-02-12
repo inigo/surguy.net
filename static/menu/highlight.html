@@ -1,0 +1,143 @@
+<!-- !DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" -->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Highlighting the current menu item</title>
+  <link rel="stylesheet" type="text/css" href="menus.css" title="Default"/>
+  <link rel="alternate stylesheet" type="text/css" href="leftmenu.css" title="Menu on left"/>
+  <meta name="author" content="Inigo Surguy - inigosurguy@hotmail.com"/>
+  <meta name="description" content="Demonstrates highlighting the current selection on a pure CSS expanding menu"/>
+  <script src="highlightCurrent.js" type="text/javascript"></script>
+</head>
+<body class="css" onLoad="highlightCurrentMenuItem()">
+
+<div class="mainmenu" id="mainmenu">
+    <div class="menu">
+	    <div>CSS</div>
+            <div class="popup">
+	    	<a href="index.html">The menu</a>
+	    	<a href="#">Nowhere</a>
+	    	<a href="#">Nowhere</a>
+	    </div>
+    </div>
+
+    <div class="menu">
+	<div>Fish</div>
+        <div class="popup">
+	    	<a href="#">One fish</a>
+	    	<a href="#">Two fish</a>
+	    	<a href="#">Red fish</a>
+	    	<a href="#">Blue fish</a>
+	</div>
+    </div>
+
+    <div class="menu">
+	<div>JavaScript</div>
+        <div class="popup">
+	    	<a href="highlight.html">Highlighting</a>
+	    	<a href="#">Nowhere</a>
+	    	<a href="#">Also nowhere</a>
+	</div>
+    </div>
+
+    <div class="menu">
+	<div>Oxo</div>
+        <div class="popup">
+	    	<a href="#">Nowhere</a>
+	    	<a href="#">Nowhere else</a>
+	    	<a href="#">And nowhere</a>
+	    	<a href="#">Nowhere too</a>
+	</div>
+    </div>
+</div>
+
+<div class="content">
+<h1>Highlighting the current menu item</h1>
+<p>Although there is no JavaScript being used for actually displaying
+the menu, JavaScript is being used to highlight the menu item that corresponds to the current page.
+</p>
+<p>It's important to be able to do this so the user doesn't get lost. It can be done either server side or client side - I think it is more useful to do it client side.
+</p>
+
+<h2>Client side highlighting allows client side HTML includes</h2>
+<p>The main reason here to use JavaScript is so <b>the navigation HTML is the same in each page</b>. This means that a <b>client side include</b> can be used to insert the same HTML in each page, so:
+<ul>
+<li><b>Code maintenance</b> is simpler - although this is a benefit shared by server side includes.</li>
+<li><b>Server load</b> is reduced when serving purely static content.</li>
+<li>The navigation HTML <b>can be cached</b> - independently of the pages in which it is included.</li>
+</ul>
+Imagine two hundred pages on a site, each with an identical 5kb of navigation. If using server side includes, that navigation HTML is downloaded 200 times - so 1MB of data. If using client side includes, with <a href="http://linux.oreillynet.com/pub/a/linux/2002/02/28/cachefriendly.html">proper cache headers</a>, the navigation is only downloaded once.</p>
+<p>
+<b>Using frames</b> has the same advantage, but it also has <a href="http://www.useit.com/alertbox/9612.html">plenty of disadvantages</a>, not least of which is that making a menu in one frame pop-up over text in another is difficult.</p>
+
+<h2>How to do client-side includes</h2>
+<p>There are four ways that I know of, all of which have significant disadvantages:
+<ul>
+<li>Use a Java applet or ActiveX control that will download from a URL, and then use JavaScript <em>document.write</em></li>
+<li>Use an IFRAME or ILAYER</li>
+<li>Use JavaScript to load data from a URL, either directly or into a hidden frame that you then reference</li>
+<li>Use XHTML and an external entity defined in the page's DTD - for example:
+<!-- The xmp tag seems to have issues with entity declarations  -->
+<div><code><pre>
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" [
+    &lt;!ENTITY navigation SYSTEM 'nav.txt'&gt;
+]&gt;
+
+</pre></code></div>
+and then include the navigation with
+<div><code><pre>
+
+&amp;navigation;
+
+</pre></code></div>
+</>
+
+</ul>
+Using an external entity is, I think, <b>the only good method</b>. It should be supported by any XHTML compatible browser, it allows the browser's normal caching mechanisms to be used, and it doesn't depend on scripting.</p>
+<p>The reason I'm not using it for this page is that Mozilla 1.0 doesn't yet support it (see bugs <a href="http://bugzilla.mozilla.org/show_bug.cgi?id=69799">69799</a> and <a href="http://bugzilla.mozilla.org/show_bug.cgi?id=22942">22942</a>).</p>
+
+<p><b>Update:</b> <a href="http://www.multiblah.com/">Kevin Cannon</a> has pointed out that the JavaScript I was using didn't work properly in IE or Opera and provided some fixes. I've updated the code on this page. Thanks!</p>
+<p>
+The menus themselves will still not work properly in IE - and won't until it supports the CSS :hover attribute correctly.
+</p>
+
+<h2>The JavaScript</h2>
+<xmp>
+
+function getLeaf(url) {
+  return url.substring(url.lastIndexOf("/")+1);
+}
+function highlightCurrentMenuItem() {
+  var currentLocation = getLeaf(document.location.href);
+  var menu = document.getElementById("mainmenu");
+  links = menu.getElementsByTagName("a");
+
+  for (i=0; i<links.length; i++) {
+    var currentHref = links[i].getAttribute("href");
+    var currentLeafName = getLeaf(currentHref);
+    if (currentLeafName==currentLocation) { 
+      // Setting class is needed for Mozilla compatibility - className appears to be correct 
+      // according to the DOM spec
+      links[i].setAttribute("class", "current");
+      links[i].setAttribute("className", "current");
+
+      // More obvious to use parentNode.parentNode.firstChild, but this
+      // may give a whitespace text node.
+      var menuHeader = links[i].parentNode.parentNode.getElementsByTagName("div").item(0);
+      menuHeader.setAttribute("class", "current");
+      menuHeader.setAttribute("className", "current");
+    }
+  }
+}
+</xmp>
+
+<h2>Return to index</h2>
+<p><a href="../index.html">Return to index</a></p>
+</div>
+
+
+  </body>
+  </html>
