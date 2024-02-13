@@ -18,7 +18,7 @@ disableKinds:
 
 Paginate: 3
 enableRobotsTXT: true
-# googleAnalytics: G-MEASUREMENT_ID
+googleAnalytics: G-LP2DET608S
 
 markup:
   goldmark:
