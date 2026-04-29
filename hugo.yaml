@@ -140,8 +140,9 @@ params:
           - [Automated accessibility testing](https://github.com/inigo/automated-accessibility-testing) using XProc and Schematron.
       - company: "Articles"
         content: |
-          These are older articles I've written:
-          
+          These are some articles I've written, mostly old:
+
+          - [Accurate infographics with ChatGPT Images 2](/articles/chatgpt-infographics.html) (2026)
           - [Rediscovering JavaScript](/articles/rediscovering-javascript.html) (2006)
           - [Client-side image generation with XSLT and SVG](/articles/client-side-svg.html) (2003)
           - [Applying the Visitor pattern to a hierarchy where the member classes are not fixed, by using reflection](/articles/visitor-with-reflection.html) (as seen in [Heinz Kabutz's Java Specialists Newsletter](https://www.javaspecialists.eu/archive/)) (2003)
